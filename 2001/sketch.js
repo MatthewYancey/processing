@@ -1,21 +1,17 @@
 // var drops = [];
-var bars = [];
+var h_bars = [];
+var n_h_bars = 4;
 
 function setup() {
   createCanvas(640, 360);
-  for (var i = 0; i < 2; i++) {
-    bars[i] = new Bar();
+  for (var i = 0; i < n_h_bars; i++) {
+    h_bars[i] = new H_bar();
   }
 }
 
 function draw() {
-  background(230, 230, 250);
-  // strokeWeight(20);
-  // stroke(138, 43, 226);
-  // line(20, 20, 100, 100);
-
-
-  for (var i = 0; i < bars.length; i++) {
-    bars[i].show();
+  background(5, 5, 5);
+  for (var i = 0; i < h_bars.length; i++) {
+    h_bars[i].show();
   }
 }
