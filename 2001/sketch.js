@@ -1,6 +1,6 @@
 // var drops = [];
 var h_bars = [];
-var n_h_bars = 4;
+var n_h_bars = 20;
 
 function setup() {
   createCanvas(640, 360);
