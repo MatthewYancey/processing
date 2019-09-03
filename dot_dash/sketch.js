@@ -1,12 +1,14 @@
 // var drops = [];
 var dots = [];
 var n_dots = 20;
+var dash;
 
 function setup() {
   createCanvas(640, 360);
   for (var i = 0; i < n_dots; i++) {
     dots[i] = new Dot();
   }
+  dash = new Dash(dots);
 }
 
 function draw() {
@@ -15,10 +17,10 @@ function draw() {
     dots[i].show();
   }
 
-  
-
-  // randomly selects a dot to jump to 
-  // dots[10].ping();
-
+  dash.show();
+  // fill(0, 0, 0);
+  // noStroke();
+  // circle(100, 100, 100);
+  // print("setup")
 
 }
