@@ -1,4 +1,9 @@
-function H_bar() {    
+function Vbar() {    
+
+    var n_bars = 12;
+    var padding = 15;
+
+
     // scale the colors to morph
 
     // draws the lines
