@@ -2,6 +2,7 @@ function Vbar() {
 
     var n_bars = 12;
     var padding = 15;
+    this.speed = random(1, 2);
 
 
     // scale the colors to morph
@@ -24,8 +25,8 @@ function Vbar() {
     this.update = function() {
         //updates the y and length
         var abs_x = abs(this.x - (width / 2));
-        this.length = this.length + abs_x;
-        this.y = this.y - (abs_x / 2);
+        this.length = this.length + (abs_x / 4);
+        this.y = this.y - (abs_x / 8);
         // updates the transparency
         this.alpha = map(abs_x, 0, (width / 2), 255, 0);
 
@@ -44,7 +45,6 @@ function Vbar() {
         this.y = height / 2;
         this.length = 1;
         this.side = Math.random() >= 0.5;
-        this.speed = random(1, 10);
         this.alpha = 255;
         this.r = random(100, 255);
         this.g = random(100, 255);
