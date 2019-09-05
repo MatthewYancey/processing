@@ -6,7 +6,6 @@ function setup() {
   for (var i = 0; i < n_bars; i++) {
     bars[i] = new Bar(random(0, width/2));
   }
-
 }
 
 function draw() {
