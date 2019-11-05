@@ -4,7 +4,7 @@ var dash;
 
 function setup() {
   createCanvas(320, 800);
-  background(245, 135, 66);
+  background(220, 220, 220);
   for (var i = 0; i < dates.length; i++){
       dashes[i] = new Dash(dates[i])
     }

@@ -3,7 +3,7 @@ var n_dots = 20;
 var dash;
 
 function setup() {
-  createCanvas(250, 500);
+  createCanvas(320, 800);
   background(220, 220, 220);
   for (var i = 0; i < dates.length; i++){
       dashes[i] = new Dash(dates[i])
