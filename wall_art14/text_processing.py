@@ -113,5 +113,5 @@ for js_var in js_vars:
 
 text = 'var people = [' + text + ']'
 
-with open(os.getcwd() + '/wall_art11/variables.js', 'w') as f:
+with open(os.getcwd() + '/wall_art14/variables.js', 'w') as f:
     f.write(text)

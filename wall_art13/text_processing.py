@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-with open(os.getcwd() + '/wall_art10/YanceyGould.ged', 'r') as f:
+with open(os.getcwd() + '/wall_art03/YanceyGould.ged', 'r') as f:
     text = f.readlines()
 
 res = []
@@ -65,6 +65,8 @@ for place in place_list:
         if place in row['place'].lower():
             df_res.loc[i, 'country'] = place
 
+df_res.to_csv(os.getcwd() + '/wall_art07/temp.csv', index=False)
+
 # filters only where we have a name
 df_res = df_res.loc[df_res['first_name'] != '', :]
 
@@ -81,37 +83,23 @@ df_res['death_year'] = pd.to_numeric(df_res['death_year'], errors='coerse')
 df_res = df_res.loc[df_res['birth_year'].notnull(), :]
 df_res.loc[df_res['death_year'].isnull(), 'death_year'] = -1
 
-df_temp = df_res.copy()
-df_temp['count'] = 1
-df_temp = df_temp.loc[df_temp['country'] != '', :]
-df_temp = df_temp.groupby(['country', 'birth_year'])['count'].sum().reset_index()
-df_temp.head()
-
-df_years = df_temp['birth_year'].unique()
-df_years = pd.DataFrame(df_years)
-df_years['country'] = ''
-df_years.columns = ['year', 'country']
-
-for i, row in df_years.iterrows():
-    max_value = max(df_temp.loc[df_temp['birth_year'] == row['year'], 'count'])
-    country = df_temp.loc[(df_temp['birth_year'] == row['year']) &
-        (df_temp['count'] == max_value), 'country'].to_list()[0]
-    df_years.loc[i, 'country'] = country
-
-df_years.head()
-
-js_vars = list(zip(df_years['year'].tolist(),
-                 df_years['country'].tolist()))
+js_vars = list(zip(df_res['birth_year'].tolist(),
+                 df_res['death_year'].tolist(),
+                 df_res['first_name'],
+                 df_res['country']))
 js_vars = [list(d) for d in js_vars]
 
 
 # makes the text
 text = ''
 for js_var in js_vars:
-    text += '[' + str(js_var[0]) + ', ' + '\'' + js_var[1] + '\'],'
+    text += '[' + str(js_var[0]) + ', ' + \
+    str(js_var[1]) + ', ' + \
+    '\'' + js_var[2].replace('\'', '') + '\',' + \
+    '\'' + js_var[3] + '\'],'
 
 
 text = 'var people = [' + text + ']'
 
-with open(os.getcwd() + '/wall_art11/variables.js', 'w') as f:
+with open(os.getcwd() + '/wall_art13/variables.js', 'w') as f:
     f.write(text)
