@@ -31,7 +31,6 @@ function draw(){
     new Dash(people[i]);
   }
 
-
   noLoop();
 }
 

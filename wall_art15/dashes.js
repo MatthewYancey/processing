@@ -9,7 +9,7 @@ function Dash(person) {
 
     brush_width = 10;
     color_jitter_range = 40;
-    sub_brush_ratio = 0.4;
+    sub_brush_ratio = 0.2;
 
     y_jitter_range = 2;
     alpha = 180;
@@ -37,7 +37,7 @@ function Dash(person) {
     function Stroke(r1, r2, r3, alpha){
         // width
         y_jitter = map(random(100), 0, 100, -y_jitter_range, y_jitter_range);
-        curve_bend = map(random(100), 0, 100, -5, 5);
+        curve_bend = map(random(100), 0, 100, -60, 60);
         boarder_jitter = map(random(100), 0, 100, boarder_range[0], boarder_range[1]);
         x_anchor = 20;
         
@@ -45,10 +45,10 @@ function Dash(person) {
         // creates the main line
         stroke(r1, r2, r3, alpha);
         strokeWeight(brush_width);
-        curve(0 - x_anchor, y - boarder_jitter,
+        curve(0 - x_anchor, y - curve_bend,
             0 + boarder_jitter, y - y_jitter,
             width - boarder_jitter, y + y_jitter,
-            width + x_anchor, y + boarder_jitter);
+            width + x_anchor, y + curve_bend);
 
         // creates the sub lines for texture
         for (var i = 0; i < n_sub_brush; i++){
@@ -58,10 +58,10 @@ function Dash(person) {
 
             stroke(r1 + color_jitter, r2 + color_jitter, r3 + color_jitter, alpha);
             strokeWeight(brush_width * sub_brush_ratio);
-            curve(0 - x_anchor, y - boarder_jitter,
+            curve(0 - x_anchor, y - curve_bend,
                 0 + boarder_jitter, y - y_jitter + y_sub_jitter,
                 width - boarder_jitter + sub_line_push, y + y_jitter + y_sub_jitter,
-                width + x_anchor, y + boarder_jitter);
+                width + x_anchor, y + curve_bend);
         }    
 
     }
