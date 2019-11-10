@@ -14,19 +14,25 @@ function Dash(person) {
         }
 
         // color
-        this.r1 = random(122);
-        this.blue = random(50);
-        this.alpha = map(random(100), 0, 100, 100, 225);
+        this.r = random(100);
+        this.g = random(100);
+        this.b = random(100);
+        this.a = random(100);
 
         // stroke
         noStroke();
-        stroke(this.r1, this.r1, this.r1 + this.blue, this.alpha);
-        line(this.x, this.y1, this.x, this.y2); 
+        stroke(this.r, this.r, this.r, this.alpha);
+        line(this.x, this.y1, this.x, this.y2);
     }
 
     this.show = function() {
-        noStroke();
-        stroke(this.r1, this.r1, this.r1 + this.blue, this.alpha);
+        // updates the mapped range
+        this.r_mapped = map(this.r, 0, 100, slider_rlower.value(), slider_rupper.value());
+        this.g_mapped = map(this.g, 0, 100, slider_glower.value(), slider_gupper.value());
+        this.b_mapped = map(this.b, 0, 100, slider_blower.value(), slider_bupper.value());
+        this.a_mapped = map(this.a, 0, 100, slider_alower.value(), slider_aupper.value());
+        
+        stroke(this.r_mapped, this.g_mapped, this.b_mapped, this.a_mapped);
         line(this.x, this.y1, this.x, this.y2);     
     }
 
