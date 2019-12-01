@@ -1,6 +1,6 @@
 var size = [1, 2.6];
-var size_x = 220  ;
-var dashes = []
+var size_x = 300;
+var dashes = [];
 var boarder = 5;
 var default_age = 30;
 var max_year = 2011;
@@ -17,7 +17,6 @@ let slider_blower;
 let slider_bupper;
 let slider_alower;
 let slider_aupper;
-
 
 function setup() {  
   createCanvas(size[0] * size_x, size[1] * size_x);
